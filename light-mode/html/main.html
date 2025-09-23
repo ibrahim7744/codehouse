@@ -7,8 +7,8 @@
     <link rel="icon" type="imges/x-icon" href="../Media/icon.ico" />
     <link rel="stylesheet" href="../css/main.css" />
     <!-- #0067be -->
-    <!-- #008aff -->
-  </head>
+    <!-- #008aff -->    
+</head>
   <body>
     <header>
       <div class="logo">
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="mode-switch">
-        <a href="../../dark-mode/html/dark main.html" class="mode-link">
+        <a href="../../index.html" class="mode-link">
           <span class="img"></span>
         </a>
       </div>
@@ -65,6 +65,20 @@
         <img src="../Media/Coding workshop-amico.svg" alt="code art image" />
       </div>
     </div>
+    
+    <!-- Articles Slider Section -->
+    <div class="articles-slider-container" id="articlesSlider">
+        <div class="slider-wrapper" id="sliderWrapper">
+            <!-- Articles will be loaded here -->
+        </div>
+        <div class="slider-nav">
+            
+            <button class="nav-btn" onclick="nextSlide()" title="التالي">&#10095;</button>  
+            <button class="nav-btn" onclick="prevSlide()" title="السابق">&#10094;</button>
+            
+        </div>
+    </div>
+
     <h3 class="title">Welcome to Code House</h3>
     <div class="video">
       <video
@@ -309,12 +323,12 @@
               required=""
             />
             <span class="forgot-password"
-              ><a href="#">Forgot Password ?</a></span
+              ><a href="sign up .html">Forgot Password ?</a></span
             >
             <input value="Sign In" type="submit" class="login-button" />
           </form>
           <div class="social-account-container">
-            <span class="title">Or Sign in with</span>
+            <span class="title"><a href="sign up .html">Or sign up ?</a></span>
             <div class="social-accounts">
               <button class="social-button google">
                 <img src="../Media/google.png" alt="google" />
@@ -333,5 +347,70 @@
         </div>
       </div>
     </div>
-  </body>
+  
+     <script>
+        let currentSlide = 0;
+        let autoSlideInterval;
+        const sliderWrapper = document.getElementById('sliderWrapper');
+        const sliderContainer = document.getElementById('articlesSlider');
+
+        function initSlider() {
+            const articles = JSON.parse(localStorage.getItem('articles')) || [];
+            if (articles.length === 0) {
+                sliderContainer.style.display = 'none';
+                return;
+            }
+            sliderContainer.style.display = 'block';
+            sliderWrapper.innerHTML = articles.map(article => `
+                <div class="article-slide">
+                    <div class="article-card-3d">
+                        <span class="category-badge">${article.category}</span>
+                        <h2>${article.title}</h2>
+                        ${article.image ? `<img src="${article.image}" alt="${article.title}">` : ''}
+                        <p>${article.content.substring(0, 250)}${article.content.length > 250 ? '...' : ''}</p>
+                    </div>
+                </div>
+            `).join('');
+            currentSlide = 0;
+            updateSliderPosition();
+            startAutoSlide();
+        }
+
+        function updateSliderPosition() {
+            const slides = document.querySelectorAll('.article-slide');
+            if (slides.length === 0) return;
+            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.article-slide');
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSliderPosition();
+            resetAutoSlide();
+        }
+
+        function prevSlide() {
+            const slides = document.querySelectorAll('.article-slide');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSliderPosition();
+            resetAutoSlide();
+        }
+
+        function startAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 10000);
+        }
+
+        function resetAutoSlide() {
+            startAutoSlide();
+        }
+
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'articles') initSlider();
+        });
+
+        document.addEventListener('DOMContentLoaded', initSlider);
+    </script>
+    
+</body>
 </html>
