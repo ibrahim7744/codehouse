@@ -1,0 +1,77 @@
+.courses-container {
+color: #0067be;
+font-family: "quest", "Segoe UI";
+background-color:hsla(0,0%,8%,1);
+background-image:
+radial-gradient(at 100% 0%,
+hsla(207,100%,50%,0.35) 0px, transparent
+50%),
+radial-gradient(at 0% 45%,
+hsla(178,100%,50%,0.31) 0px, transparent
+50%),
+radial-gradient(at 80% 100%,
+hsla(240,100%,70%,0.63) 0px, transparent
+50%);
+    padding: 20px;
+  }
+  body{
+    background-color:hsla(0,0%,8%,1);
+background-image:
+radial-gradient(at 100% 0%,
+hsla(207,100%,50%,0.35) 0px, transparent
+50%),
+radial-gradient(at 0% 45%,
+hsla(178,100%,50%,0.31) 0px, transparent
+50%),
+radial-gradient(at 80% 100%,
+hsla(240,100%,70%,0.63) 0px, transparent
+50%);
+  }
+
+  .courses-container h2 {
+    background-color: #008aff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px; 
+    text-align: center;
+    font-size: 1.2em;
+    scroll-margin-top: 200px;
+  }
+
+  .courses-container ul.course-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+
+  }
+
+  .courses-container ul.course-list li.course-item {
+     background-color:hsla(0,0%,8%,1);
+    border: 2px solid #008aff;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.3s;
+    
+  }
+
+  .courses-container ul.course-list li.course-item a {
+    display: block;
+    padding: 12px;
+    color: #fdfeff;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s, transform 0.3s;
+  }
+
+  .courses-container ul.course-list li.course-item a:hover {
+    background-color: #008aff;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transform: scale(1.0);
+  }
+
+
+

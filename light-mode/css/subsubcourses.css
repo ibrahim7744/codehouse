@@ -1,0 +1,55 @@
+
+  .courses-container {
+    color: #0067be;
+      font-family: "quest", "Segoe UI";
+
+    background-color: #fff;
+    padding: 20px;
+  }
+
+  .courses-container h2 {
+    background-color: #008aff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px; 
+    text-align: center;
+    font-size: 1.2em;
+    scroll-margin-top: 200px;
+  }
+
+  .courses-container ul.course-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .courses-container ul.course-list li.course-item {
+    background-color: #ffffff;
+    border: 2px solid #008aff;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.3s;
+  
+  }
+
+  .courses-container ul.course-list li.course-item a {
+    display: block;
+    padding: 12px;
+    color: #0067be;
+    text-decoration: none;
+    transition: color 0.3s, background-color 0.3s, transform 0.3s;
+  }
+
+  .courses-container ul.course-list li.course-item a:hover {
+    background-color: #008aff;
+    color: white;
+    cursor: pointer;
+    transform: scale(1.0);
+    
+  }
+
+
+

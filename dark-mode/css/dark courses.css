@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "quest";
+  src: url("../fonts/Questv1-Regular.otf"), format("otf");
+}
+body {
+  font-family: "quest", "Segoe UI";
+  background-color:hsla(0,0%,8%,1);
+background-image:
+radial-gradient(at 100% 0%,
+hsla(207,100%,50%,0.35) 0px, transparent
+50%),
+radial-gradient(at 0% 45%,
+hsla(178,100%,50%,0.31) 0px, transparent
+50%),
+radial-gradient(at 80% 100%,
+hsla(240,100%,70%,0.63) 0px, transparent
+50%);
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  text-align: center;
+}
+
+/* courses.html */
+h1 {
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 3px rgba(0, 138, 255, 1.1);
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 30px;
+}
+.course {
+  background-color: #fff;
+  border: none;
+  border-radius: 60px;
+  box-shadow: 0 5px 5px #028bff;
+  margin: 10px;
+  padding: 0px;
+  text-align: center;
+  width: 335px;
+  height: 550px;
+}
+.course img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20%;
+  border-bottom: #008aff solid 3px;
+}
+.course h3 {
+  color: #008aff;
+  font-size: large;
+  margin: 2px 0;
+}
+.course p {
+  color: #000000;
+  font-size: medium;
+  padding: 0 3px 20px;
+}
+.course button {
+  background-color: #008aff;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-family: "quest", "Segoe UI";
+  cursor: pointer;
+
+  padding: 10px 20px;
+}
+.course button:hover {
+  background-color: #0f3bda;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 138, 255, 0.3);
+}
+.course:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 138, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.footer {
+  padding: 12px 100px;
+  text-align: center;
+}
+
+.footer .button1 {
+  font-family: "quest", "Segoe UI";
+  margin-left: 70px;
+  width: 235px;
+  height: 50px;
+  border-radius: 50px;
+  background-image: linear-gradient(135deg, #008aff 0%, #0067be 100%);
+  box-shadow: 0 10px 30px -6px #599cf0;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  font-size: 19px;
+  color: white;
+}
+
+.footer .button2 {
+  font-family: "quest", "Segoe UI";
+  margin-right: 70px;
+  width: 235px;
+  height: 50px;
+  border-radius: 50px;
+  background-image: linear-gradient(135deg, #008aff 0%, #0067be 100%);
+  box-shadow: 0 10px 30px -6px #599cf0;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  font-size: 20px;
+  color: white;
+}
+
+.footer .button1:hover,
+.footer .button2:hover {
+  background: #021658;
+  box-shadow: 0 15px 40px rgba(2, 22, 88, 0.3);
+  transform: translateY(-2px);
+}
