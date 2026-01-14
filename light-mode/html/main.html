@@ -50,7 +50,7 @@
         </a>
       </div>
       <div class="login">
-        <button class="btn"><a href="#signin">سجل الان</a></button>
+        <button class="btn" id="login_button"><a href="#signin">سجل الان</a></button>
       </div>
     </header>
     <div class="first-con">
@@ -288,42 +288,36 @@
       </li>
     </ul>
       </div>
-      <div class="signin">
+      <div class="signin" id="signin_div">
         <div class="container-signin">
           <div class="heading">Sign In</div>
-          <form class="form" action="">
-            <input
-              placeholder="E-mail"
-              id="email"
-              name="email"
-              type="email"
-              class="input"
-              required=""
-            />
-            <input
-              placeholder="Password"
-              id="password"
-              name="password"
-              type="password"
-              class="input"
-              required=""
-            />
+          <form class="form" action="sign_in_val.php" id="loginForm" method="post">
+            <input placeholder="E-mail" id="email" name="email" type="text" class="input" required=""/>
+            <input placeholder="Password" id="password" name="password" type="password" class="input" required="" />
             <span class="forgot-password"
+<<<<<<< Updated upstream
               ><a href="#">Forgot Password ?</a></span
+=======
+              ><a href="dark-mode/html/dark sign up .php">Forgot Password ?</a></span
+>>>>>>> Stashed changes
             >
             <input value="Sign In" type="submit" class="login-button" />
           </form>
           <div class="social-account-container">
+<<<<<<< Updated upstream
             <span class="title">Or Sign in with</span>
+=======
+            <span class="title"><a href="dark-mode/html/dark sign up .php">Or sign up ?</a></span>
+>>>>>>> Stashed changes
             <div class="social-accounts">
               <button class="social-button google">
-                <img src="../Media/google.png" alt="google" />
+                <img src="dark-mode/Media/google.png" alt="google" />
               </button>
               <button class="social-button apple">
-                <img src="../Media/apple.png" alt="google" />
+                <img src="dark-mode/Media/apple.png" alt="google" />
               </button>
               <button class="social-button twitter">
-                <img src="../Media/twitter.png" alt="google" class="svg" />
+                <img src="dark-mode/Media/twitter.png" alt="google" class="svg" />
               </button>
             </div>
           </div>
@@ -333,5 +327,155 @@
         </div>
       </div>
     </div>
+<<<<<<< Updated upstream
   </body>
+=======
+  
+     <script>
+        let currentSlide = 0;
+        let autoSlideInterval;
+        const sliderWrapper = document.getElementById('sliderWrapper');
+        const sliderContainer = document.getElementById('articlesSlider');
+
+        function initSlider() {
+            const articles = JSON.parse(localStorage.getItem('articles')) || [];
+            if (articles.length === 0) {
+                sliderContainer.style.display = 'none';
+                return;
+            }
+            sliderContainer.style.display = 'block';
+            sliderWrapper.innerHTML = articles.map(article => `
+                <div class="article-slide">
+                    <div class="article-card-3d">
+                        <span class="category-badge">${article.category}</span>
+                        <h2>${article.title}</h2>
+                        ${article.image ? `<img src="${article.image}" alt="${article.title}">` : ''}
+                        <p>${article.content.substring(0, 250)}${article.content.length > 250 ? '...' : ''}</p>
+                    </div>
+                </div>
+            `).join('');
+            currentSlide = 0;
+            updateSliderPosition();
+            startAutoSlide();
+        }
+
+        function updateSliderPosition() {
+            const slides = document.querySelectorAll('.article-slide');
+            if (slides.length === 0) return;
+            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.article-slide');
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSliderPosition();
+            resetAutoSlide();
+        }
+
+        function prevSlide() {
+            const slides = document.querySelectorAll('.article-slide');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSliderPosition();
+            resetAutoSlide();
+        }
+
+        function startAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 10000);
+        }
+
+        function resetAutoSlide() {
+            startAutoSlide();
+        }
+
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'articles') initSlider();
+        });
+
+        document.addEventListener('DOMContentLoaded', initSlider);
+
+                //--------------------------------------------------
+
+function freezePage() {
+    document.body.style.overflow = "hidden";
+}
+
+function unfreezePage() {
+    document.body.style.overflow = "auto";
+}
+
+function hideLoginUI() {
+    const div = document.getElementById("signin_div");
+    const btn = document.getElementById("login_button");
+
+    if (div) div.style.display = "none";
+    if (btn) btn.style.display = "none";
+}
+
+
+function scrollToLoginForm() {
+    const form = document.getElementById("loginForm");
+    if (form) {
+        const yOffset = -230; 
+        const y = form.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+    }
+}
+
+
+function checkLoginStatus() {
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn) {
+        hideLoginUI(); 
+        unfreezePage();
+    } else {
+        setTimeout(() => {
+            const agree = confirm("You should sign in to continue");
+
+            freezePage();
+
+            if (agree) {
+                scrollToLoginForm();
+            }
+        }, 500);
+    }
+}
+
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch("../../sign_in_val.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(result => {
+        if (result === "success") {
+            sessionStorage.setItem("isLoggedIn", "true");
+            unfreezePage();
+            hideLoginUI();
+            alert("Login successful!");
+        } 
+        else if (result === "wrong") {
+            alert("Wrong Email or Password");
+        } 
+        else {
+            alert("Login failed");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Server error");
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", checkLoginStatus);
+    </script>
+    
+</body>
+>>>>>>> Stashed changes
 </html>
