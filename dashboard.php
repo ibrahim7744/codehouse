@@ -776,51 +776,68 @@
         <section id="create" class="content-section">
             <h2 style="color: var(--primary); margin-bottom: 20px;">إضافة مقالة جديدة</h2>
             <div class="form-container">
-                <form id="createForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="title">عنوان المقالة *</label>
-                            <input type="text" id="title" required placeholder="أدخل عنوان المقالة">
-                        </div>
-                        <div class="form-group">
-                            <label for="category">الفئة *</label>
-                            <select id="category" required>
-                                <option value="">اختر فئة</option>
-                                <option value="أساسيات الحاسوب">أساسيات الحاسوب وتكنولوجيا المعلومات</option>
-                                <option value="تطوير الويب">تطوير الويب</option>
-                                <option value="الذكاء الإصطناعي">الذكاء الإصطناعي</option>
-                                <option value="الأمن السيبراني">الأمن السيبراني</option>
-                                <option value="قواعد البيانات">قواعد البيانات</option>
-                                <option value="تطوير تطبيقات الهاتف">تطوير تطبيقات الهاتف</option>
-                                <option value="أنظمة التشغيل">أنظمة التشغيل والشبكات</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="content">محتوى المقالة *</label>
-                        <textarea id="content" required placeholder="اكتب محتوى المقالة..."></textarea>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="author">الكاتب</label>
-                            <input type="text" id="author" placeholder="اسم الكاتب">
-                        </div>
-                        <div class="form-group">
-                            <label for="imageFile">صورة المقالة (من الجهاز)</label>
-                            <input type="file" id="imageFile" accept="image/*">
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> حفظ المقالة</button>
-                        <button type="reset" class="btn btn-secondary">مسح النموذج</button>
-                    </div>
-                </form>
+           <form method="POST" action="save_article.php" id="createForm" enctype="multipart/form-data">
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="title">عنوان المقالة *</label>
+            <input type="text" id="title" name="title" required placeholder="أدخل عنوان المقالة">
+        </div>
+
+        <div class="form-group">
+            <label for="category">الفئة *</label>
+            <select id="category" name="category" required>
+                <option value="">اختر فئة</option>
+                <option value="أساسيات الحاسوب">أساسيات الحاسوب وتكنولوجيا المعلومات</option>
+                <option value="تطوير الويب">تطوير الويب</option>
+                <option value="الذكاء الإصطناعي">الذكاء الإصطناعي</option>
+                <option value="الأمن السيبراني">الأمن السيبراني</option>
+                <option value="قواعد البيانات">قواعد البيانات</option>
+                <option value="تطوير تطبيقات الهاتف">تطوير تطبيقات الهاتف</option>
+                <option value="أنظمة التشغيل">أنظمة التشغيل والشبكات</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="content">محتوى المقالة *</label>
+        <textarea id="content" name="content" required placeholder="اكتب محتوى المقالة..."></textarea>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="author">الكاتب</label>
+            <input type="text" id="author" name="author" placeholder="اسم الكاتب">
+        </div>
+
+        <div class="form-group">
+            <label for="imageFile">صورة المقالة (من الجهاز)</label>
+            <input type="file" id="imageFile" name="imageFile" accept="image/*">
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button type="submit" class="btn btn-success" name="save_article" formnovalidate>
+            <i class="fas fa-save"></i> حفظ المقالة
+        </button>
+        <button type="reset" class="btn btn-secondary">مسح النموذج</button>
+    </div>
+
+</form>
+
             </div>
         </section>
 
         <!-- Users Section -->
         <section id="users" class="content-section">
             <h2 style="color: var(--primary); margin-bottom: 20px;">إدارة المستخدمين</h2>
+            <input 
+                type="text" 
+                id="userSearch" 
+                placeholder="ابحث عن مستخدم بالاسم أو البريد..." 
+                style="margin-bottom:15px; padding:8px; width:100%; border-radius:6px; border:1px solid #ccc;">
+                                                                                                                   
+
             <div class="table-container">
                 <table>
                     <thead>
@@ -848,14 +865,15 @@
                 <h3>تعديل المقالة</h3>
                 <button class="modal-close" onclick="closeEditModal()">&times;</button>
             </div>
-            <form id="editForm">
+             <form id="editForm" method="POST" enctype="multipart/form-data">
+
                 <div class="form-group">
                     <label for="editTitle">عنوان المقالة *</label>
-                    <input type="text" id="editTitle" required>
+                    <input type="text" id="editTitle" name="title" required>
                 </div>
                 <div class="form-group">
                     <label for="editCategory">الفئة *</label>
-                    <select id="editCategory" required>
+                    <select id="editCategory" name="category" required>
                         <option value="أساسيات الحاسوب">أساسيات الحاسوب وتكنولوجيا المعلومات</option>
                         <option value="تطوير الويب">تطوير الويب</option>
                         <option value="الذكاء الإصطناعي">الذكاء الإصطناعي</option>
@@ -867,21 +885,22 @@
                 </div>
                 <div class="form-group">
                     <label for="editContent">محتوى المقالة *</label>
-                    <textarea id="editContent" required></textarea>
+                    <textarea id="editContent" name="content" required></textarea>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="editAuthor">الكاتب</label>
-                        <input type="text" id="editAuthor">
+                        <input type="text" id="editAuthor"  name="author">
                     </div>
                     <div class="form-group">
                         <label for="editImageFile">تغيير الصورة</label>
-                        <input type="file" id="editImageFile" accept="image/*">
+                        <input type="file" id="editImageFile" name="imageFile" accept="image/*">
                     </div>
                 </div>
                 <div class="btn-group">
                     <button type="submit" class="btn btn-success">حفظ التغييرات</button>
                     <button type="button" class="btn btn-secondary" onclick="closeEditModal()">إلغاء</button>
+                    
                 </div>
             </form>
         </div>
@@ -904,37 +923,71 @@
 
     <script>
         // Data Management
-        let articles = JSON.parse(localStorage.getItem('articles')) || [];
-        let users = JSON.parse(localStorage.getItem('users')) || [];
+        let articles = [];
+        let users = [];
         let editingId = null;
         let deletingId = null;
         let deletingType = null; // 'article' or 'user'
-
+    
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             setupEventListeners();
-            renderDashboard();
-            renderArticles();
-            renderUsers();
+            fetchArticles();
+            fetchUsers();
         });
 
         function setupEventListeners() {
-            document.querySelectorAll('.sidebar-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const tab = e.currentTarget.dataset.tab;
-                    if (tab) switchTab(tab);
-                });
-            });
+    // ربط الأحداث العامة التي تكون موجودة دائماً
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const tab = e.currentTarget.dataset.tab;
+            if (tab) switchTab(tab);
+        });
+    });
 
-            document.getElementById('toggleSidebar').addEventListener('click', () => {
-                document.getElementById('sidebar').classList.toggle('active');
-            });
+    const toggleSidebarBtn = document.getElementById('toggleSidebar');
+    if (toggleSidebarBtn) {
+        toggleSidebarBtn.addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+    }
 
-            document.getElementById('createForm').addEventListener('submit', handleCreateArticle);
-            document.getElementById('editForm').addEventListener('submit', handleUpdateArticle);
-            document.getElementById('articleSearch').addEventListener('input', filterArticles);
-            document.getElementById('categoryFilter').addEventListener('change', filterArticles);
-        }
+    // ربط الأحداث الخاصة بكل قسم مع التحقق من وجود العنصر
+    const editForm = document.getElementById('editForm');
+    if (editForm) {
+        editForm.addEventListener('submit', handleUpdateArticle);
+    }
+
+    const articleSearch = document.getElementById('articleSearch');
+    if (articleSearch) {
+        articleSearch.addEventListener('input', filterArticles);
+    }
+
+    const categoryFilter = document.getElementById('categoryFilter');
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', filterArticles);
+    }
+
+    // === هذا هو السطر المهم ===
+    // سيتم ربط حدث البحث عن المستخدمين فقط إذا كان الحقل موجوداً في الصفحة
+    const userSearch = document.getElementById('userSearch');
+    if (userSearch) {
+        userSearch.addEventListener('input', filterUsers);
+    }
+}
+
+        function filterUsers(){
+    const term = document.getElementById('userSearch').value.toLowerCase();
+
+    const filtered = users.filter(u =>
+        (u.name && u.name.toLowerCase().includes(term)) ||
+        (u.email && u.email.toLowerCase().includes(term))
+    );
+
+    renderUsers(filtered);
+}
+
+
 
         function switchTab(tabName) {
             document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
@@ -960,55 +1013,91 @@
         }
 
         // Article Handlers
-        async function handleCreateArticle(e) {
-            e.preventDefault();
-            const fileInput = document.getElementById('imageFile');
-            let imageData = '';
+      async function handleCreateArticle(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const res = await fetch('add_article.php', {
+        method: 'POST',
+        body: formData
+    });
+
+    const text = await res.text();
+console.log(text);
+
+    if (data.status === 'success') {
+        showAlert('تمت إضافة المقالة بنجاح', 'success');
+        e.target.reset();
+        fetchArticles();
+        switchTab('articles');
+    } else {
+        showAlert('حدث خطأ: ' + data.msg, 'danger');
+    }
+}
+
+
+
+        function deleteUser(id) {
             
-            if (fileInput.files[0]) {
-                imageData = await getBase64(fileInput.files[0]);
-            }
+    if (!confirm("هل أنت متأكد من الحذف؟")) return;
 
-            const newArticle = {
-                id: Date.now(),
-                title: document.getElementById('title').value,
-                category: document.getElementById('category').value,
-                content: document.getElementById('content').value,
-                author: document.getElementById('author').value || 'المسؤول',
-                image: imageData,
-                createdAt: new Date().toISOString()
-            };
-
-            articles.push(newArticle);
-            localStorage.setItem('articles', JSON.stringify(articles));
-            showAlert('تمت إضافة المقالة بنجاح', 'success');
-            e.target.reset();
-            switchTab('articles');
-            renderArticles();
-            renderDashboard();
+    fetch('users_handler.php?action=delete', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'id=' + id
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            loadUsers(); // إعادة تحميل الجدول
+        } else {
+            alert("فشل الحذف");
         }
+    });
+}
 
-        async function handleUpdateArticle(e) {
-            e.preventDefault();
-            const index = articles.findIndex(a => a.id === editingId);
-            if (index === -1) return;
 
-            const fileInput = document.getElementById('editImageFile');
-            if (fileInput.files[0]) {
-                articles[index].image = await getBase64(fileInput.files[0]);
-            }
 
-            articles[index].title = document.getElementById('editTitle').value;
-            articles[index].category = document.getElementById('editCategory').value;
-            articles[index].content = document.getElementById('editContent').value;
-            articles[index].author = document.getElementById('editAuthor').value;
 
-            localStorage.setItem('articles', JSON.stringify(articles));
-            closeEditModal();
+
+async function handleUpdateArticle(e) {
+    e.preventDefault(); 
+
+    if (!editingId) {
+        showAlert('لم يتم تحديد المقالة للتعديل', 'danger');
+        return;
+    }
+
+    const formData = new FormData(e.target);
+    
+    // -->> إضافة السطر التالي لحل المشكلة <<--
+    formData.append('id', editingId); 
+
+    try {
+        const res = await fetch('update_article.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await res.json();
+
+        if (data.status === 'success') {
             showAlert('تم تحديث المقالة بنجاح', 'success');
-            renderArticles();
-            renderDashboard();
+            closeEditModal();
+            fetchArticles(); // تحديث قائمة المقالات
+        } else {
+            // عرض رسالة الخطأ التي تأتي من PHP
+            console.error('Server Error:', data.msg); 
+            showAlert('حدث خطأ: ' + (data.msg || 'غير معروف'), 'danger');
         }
+    } catch (error) {
+        console.error('Fetch Error:', error);
+        showAlert('حدث خطأ في الاتصال بالخادم.', 'danger');
+    }
+}
+
+
+
 
         // Render Functions
         function renderDashboard() {
@@ -1016,10 +1105,11 @@
             document.getElementById('totalUsers').textContent = users.length;
             
             const thisMonth = articles.filter(a => {
-                const d = new Date(a.createdAt);
-                const now = new Date();
-                return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
-            }).length;
+    const d = new Date(a.createdAt);
+    const now = new Date();
+    return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+}).length;
+
             document.getElementById('thisMonthArticles').textContent = thisMonth;
 
             const recent = articles.slice(-3).reverse();
@@ -1061,70 +1151,132 @@
             `;
         }
 
-        function renderUsers() {
-            const table = document.getElementById('usersTable');
-            const empty = document.getElementById('emptyUsers');
-            
-            if (users.length === 0) {
-                table.innerHTML = '';
-                empty.classList.remove('hidden');
-            } else {
-                empty.classList.add('hidden');
-                table.innerHTML = users.map(u => `
-                    <tr>
-                        <td>${u.name || u.username || 'مستخدم'}</td>
-                        <td>${u.email}</td>
-                        <td>${u.createdAt ? new Date(u.createdAt).toLocaleDateString('ar-EG') : 'غير محدد'}</td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px 10px;" onclick="openDeleteModal('${u.email}', 'user')">
-                                <i class="fas fa-trash"></i> حذف
-                            </button>
-                        </td>
-                    </tr>
-                `).join('');
-            }
+       // استبدل الدالة الحالية بهذه
+function renderUsers(dataToRender) { // تم تغيير اسم المتغير للوضوح
+    const table = document.getElementById('usersTable');
+    const empty = document.getElementById('emptyUsers');
+
+    if (!dataToRender || dataToRender.length === 0) {
+        table.innerHTML = '';
+        empty.classList.remove('hidden');
+    } else {
+        empty.classList.add('hidden');
+        table.innerHTML = dataToRender.map(u => `
+            <tr>
+                <td>${u.name || 'مستخدم غير مسجل'}</td>
+                <td>${u.email}</td>
+                <td>${u.createdAt ? new Date(u.createdAt).toLocaleDateString('ar-EG', { year: 'numeric', month: 'long', day: 'numeric' }) : 'غير محدد'}</td>
+                <td>
+                    <button class="btn btn-danger" style="padding: 5px 10px;" onclick="openDeleteModal(${u.id}, 'user')">
+                        <i class="fas fa-trash"></i> حذف
+                    </button>
+                </td>
+            </tr>
+        `).join('');
+    }
+}
+
+  document.getElementById('userSearch').addEventListener('input', function() {
+    const term = this.value.toLowerCase();
+    const filtered = users.filter(u =>
+        (u.name && u.name.toLowerCase().includes(term)) ||
+        (u.email && u.email.toLowerCase().includes(term))
+    );
+    renderUsers(filtered);
+});
+
+
+
+// فتح نافذة حذف المستخدم
+// استبدل كل دوال الحذف القديمة بهذه الدالة الموحدة
+function openDeleteModal(id, type) {
+    deletingId = id; // يمكن أن يكون رقم المقالة أو البريد الإلكتروني للمستخدم
+    deletingType = type;
+
+    // تحديد نص الرسالة بناءً على النوع
+    const text = type === 'article'
+        ? `هل أنت متأكد من حذف المقالة رقم ${id}؟`
+        : `هل أنت متأكد من حذف المستخدم صاحب البريد: ${id}؟`;
+
+    document.getElementById('deleteModalText').textContent = text;
+    document.getElementById('deleteModal').classList.add('active');
+
+    // ربط حدث النقر لزر تأكيد الحذف
+    document.getElementById('confirmDeleteBtn').onclick = async () => {
+        if (deletingType === 'article') {
+            // منطق حذف المقالة
+            await handleDelete('articles_handler.php?action=delete', { id: deletingId }, fetchArticles);
+        } else if (deletingType === 'user') {
+            // منطق حذف المستخدم
+            await handleDelete('users_handler.php?action=delete', { id: deletingId }, fetchUsers);
         }
+        closeDeleteModal();
+    };
+}
+
+// دالة مساعدة جديدة لتنفيذ الحذف وإعادة التحميل
+async function handleDelete(url, body, callback) {
+    try {
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(body)
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            showAlert('تم الحذف بنجاح.', 'success');
+            callback(); // استدعاء دالة إعادة الجلب (fetchArticles أو fetchUsers)
+        } else {
+            showAlert('فشل الحذف: ' + (data.msg || 'خطأ غير معروف'), 'danger');
+        }
+    } catch (error) {
+        console.error('Delete operation failed:', error);
+        showAlert('فشل الاتصال بالخادم أثناء محاولة الحذف.', 'danger');
+    }
+}
+
+
+
+
+
 
         // Modal Handlers
-        function openEditModal(id) {
-            editingId = id;
-            const article = articles.find(a => a.id === id);
-            if (!article) return;
 
-            document.getElementById('editTitle').value = article.title;
-            document.getElementById('editCategory').value = article.category;
-            document.getElementById('editContent').value = article.content;
-            document.getElementById('editAuthor').value = article.author;
+async function openEditModal(id) {
+    editingId = id;
+
+    try {
+        // جلب بيانات المقالة من DB
+        const res = await fetch(`fetch_single_article.php?id=${id}`);
+        const data = await res.json();
+
+        if (res.ok) {
+            // تعبئة الفورم بالبيانات
+            document.getElementById('editTitle').value = data.title || '';
+            document.getElementById('editCategory').value = data.category || '';
+            document.getElementById('editContent').value = data.content || '';
+            // document.getElementById('editAuthor').value = data.author; // <-- تم إلغاء هذا السطر
+
+            // عرض النافذة
             document.getElementById('editModal').classList.add('active');
+        } else {
+            showAlert('فشل في جلب بيانات المقالة: ' + (data.msg || 'خطأ غير معروف'), 'danger');
         }
+    } catch (error) {
+        showAlert('حدث خطأ في الشبكة عند جلب البيانات.', 'danger');
+        console.error("Fetch article error:", error);
+    }
+}
+
+
 
         function closeEditModal() {
             document.getElementById('editModal').classList.remove('active');
             document.getElementById('editForm').reset();
         }
 
-        function openDeleteModal(id, type) {
-            deletingId = id;
-            deletingType = type;
-            const text = type === 'article' ? 'هل أنت متأكد من حذف هذه المقالة؟' : 'هل أنت متأكد من حذف هذا المستخدم؟';
-            document.getElementById('deleteModalText').textContent = text;
-            document.getElementById('deleteModal').classList.add('active');
-            
-            document.getElementById('confirmDeleteBtn').onclick = () => {
-                if (deletingType === 'article') {
-                    articles = articles.filter(a => a.id !== deletingId);
-                    localStorage.setItem('articles', JSON.stringify(articles));
-                    renderArticles();
-                } else {
-                    users = users.filter(u => u.email !== deletingId);
-                    localStorage.setItem('users', JSON.stringify(users));
-                    renderUsers();
-                }
-                renderDashboard();
-                closeDeleteModal();
-                showAlert('تم الحذف بنجاح', 'success');
-            };
-        }
+       
 
         function closeDeleteModal() {
             document.getElementById('deleteModal').classList.remove('active');
@@ -1143,6 +1295,32 @@
             renderArticles(filtered);
         }
 
+
+        // Fetch articles from DB
+       async function fetchArticles() {
+    const res = await fetch('fetch_articles_dark.php');
+    articles = await res.json();
+    renderArticles();
+    renderDashboard();
+}
+
+     // استبدل الدالة الحالية بهذه
+async function fetchUsers() {
+    try {
+        const res = await fetch('fetch_users.php');
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        users = await res.json(); // تخزين المستخدمين في المتغير العام
+        renderUsers(users); // عرضهم مباشرة بعد الجلب
+        renderDashboard(); // تحديث الإحصائيات في لوحة التحكم
+    } catch (error) {
+        console.error("Fetch users error:", error);
+        showAlert('حدث خطأ في تحميل قائمة المستخدمين.', 'danger');
+    }
+}
+
+
         function showAlert(message, type) {
             const container = document.getElementById('alertContainer');
             const alert = document.createElement('div');
@@ -1153,7 +1331,7 @@
         }
 
         function logout() {
-            window.location.href = 'index.html';
+            window.location.href ='index.php';
         }
     </script>
 </body>

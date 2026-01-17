@@ -4,71 +4,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code House</title>
-    <link rel="icon" type="imges/x-icon" href="../Media/icon.ico" />
-    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="icon" type="imges/x-icon" href="dark-mode/Media/icon.ico" />
+    <link rel="stylesheet" href="dark-mode/css/dark main.css" />
     <!-- #0067be -->
     <!-- #008aff -->
   </head>
   <body>
-    <header>
+<header>
       <div class="logo">
-        <a href="main.html"><img src="../Media/Icon_trns.png" alt="Logo" /></a>
+        <a href="index.php"><img src="dark-mode/Media/Icon_trns.png" alt="Logo" /></a>
       </div>
       <div class="web-name">
-        <a href="main.html"><h1>Code House</h1></a>
+        <a href="index.php"><h1>Code House</h1></a>
       </div>
       <div class="nav-bar">
         <ul>
           <li>
-            <button class="nav-but"><a href="main.html">الرئيسية</a></button>
+            <button class="nav-but"><a href="index.php">الرئيسية</a></button>
           </li>
           <li>
-            <button class="nav-but"><a href="courses.html">كورسات</a></button>
+            <button class="nav-but"><a href="dark-mode/html/dark courses.html">كورسات</a></button>
           </li>
           <li>
-            <button class="nav-but"><a href="projects.html">مشاريع</a></button>
+            <button class="nav-but"><a href="dark-mode/html/dark projects.html">مشاريع</a></button>
           </li>
           <li>
-            <button class="nav-but"><a href="#how-we-are">من نحن</a></button>
+            <button class="nav-but"><a href="index.php#how-we-are">من نحن</a></button>
           </li>
           <li>
             <button class="nav-but" id="spe">
-              <a href="#contact-us">تواصل معنا</a>
+              <a href="index.php#contact-us">تواصل معنا</a>
             </button>
           </li>
         </ul>
       </div>
-      <div class="search-bar">
+     
+<div class="search-bar">
         <div class="group">
-          <img src="../Media/search.png" alt="search" class="icon" />
+          <img src="dark-mode/Media/search.png" alt="search" class="icon">
           <input placeholder="Search" type="search" class="input" />
         </div>
-      </div>
+        </div>
       <div class="mode-switch">
-        <a href="../../dark-mode/html/dark main.html" class="mode-link">
+        <a href="light-mode/html/main.php" class="mode-link">
           <span class="img"></span>
         </a>
       </div>
       <div class="login">
-        <button class="btn" id="login_button"><a href="#signin">سجل الان</a></button>
+        <button class="btn" id="login_button"><a href="index.php#signin">سجل الان</a></button>
       </div>
     </header>
+
+
     <div class="first-con">
       <div class="f-text">
         <p id="p1">في Code House</p>
         <p id="p2">
           نبني مستقبل المبرمجين سطرًا بسطر… ونفتح لك أبواب الإبداع بلا حدود
         </p>
-        <a href="courses.html"><button>اكتشف كورساتنا التعليمة</button></a>
+        <a href="dark-mode/html/dark courses.html"><button>اكتشف كورساتنا التعليمة</button></a>
       </div>
       <div class="f-img">
-        <img src="../Media/Coding workshop-amico.svg" alt="code art image" />
+        <img src="dark-mode/Media/Coding workshop-amico.svg" alt="code art image" />
       </div>
+    </div>
+    <!-- Article Section --------------------- -->
+    <div class="articles-slider-container" id="articlesSlider">
+        <div class="slider-wrapper" id="sliderWrapper">
+            <!-- Articles will be loaded here -->
+        </div>
+        <div class="slider-nav">
+            <!-- Corrected Button Directions for RTL -->
+            <button class="nav-btn" onclick="prevSlide()" title="السابق">&#10094;</button>
+            <button class="nav-btn" onclick="nextSlide()" title="التالي">&#10095;</button>
+           
+        </div>
     </div>
     <h3 class="title">Welcome to Code House</h3>
     <div class="video">
       <video
-        src="../Media/code house introduction.mp4"
+        src="dark-mode/Media/code house introduction.mp4"
         alt="Video"
         controls
         loop
@@ -76,42 +91,42 @@
     </div>
     <h3 class="title">الأقسام</h3>
     <div class="cards-container">
-      <a href="courses.html"
+      <a href="dark-mode/html/dark courses.html"
         ><div class="card">
           <h2>كورسات</h2>
-          <img src="../Media/course_icon.png" alt="course_icon" /></div
+          <img src="dark-mode/Media/course_icon.png" alt="course_icon" /></div
       ></a>
-      <a href="projects.html"
+      <a href="dark-mode/html/dark projects.html"
         ><div class="card">
           <h2>مشاريع</h2>
-          <img src="../Media/project_icon.png" alt="project_icon" /></div
+          <img src="dark-mode/Media/project_icon.png" alt="project_icon" /></div
       ></a>
     </div>
     <h3 class="title">الدورات الأكثر طلباً</h3>
     <div class="cards-container2">
-      <a href="subsubcourses.html#section5"
+      <a href="dark-mode/html/dark subsubcourses.html#section5"
         ><div class="card2">
           <h2>++C</h2>
-          <img src="../Media/c-.png" alt="C++" /></div
+          <img src="dark-mode/Media/c-.png" alt="C++" /></div
       ></a>
-      <a href="subsubcourses.html#section19"
+      <a href="dark-mode/html/dark subsubcourses.html#section19"
         ><div class="card2">
           <h2>SQL</h2>
-          <img src="../Media/sql-server.png" alt="SQL" /></div
+          <img src="dark-mode/Media/sql-server.png" alt="SQL" /></div
       ></a>
-      <a href="subsubcourses.html#section6"
+      <a href="dark-mode/html/dark subsubcourses.html#section6"
         ><div class="card2">
           <h2>Python</h2>
-          <img src="../Media/python.png" alt="Python" /></div
+          <img src="dark-mode/Media/python.png" alt="Python" /></div
       ></a>
-      <a href="subsubcourses.html#section9"
+      <a href="dark-mode/html/dark subsubcourses.html#section9"
         ><div class="card2">
           <h2>HTML</h2>
-          <img src="../Media/html.png" alt="HTML" /></div
+          <img src="dark-mode/Media/html.png" alt="HTML" /></div
       ></a>
     </div>
     <div class="x-but">
-      <a href="subcourses.html"><button>تصفح المزيد من الدورات </button></a>
+      <a href="dark-mode/html/dark subcourses.html"><button>تصفح المزيد من الدورات</button></a>
     </div>
     <h3 class="title">مميزات Code House</h3>
     <div class="featuers">
@@ -132,13 +147,13 @@
           </ol>
         </div>
         <div class="f-img">
-          <img src="../Media/feat1.svg" alt="code art image" />
+          <img src="dark-mode/Media/feat1.svg" alt="code art image" />
         </div>
       </div>
       <!-- ------------------------------------------------------- -->
       <div class="first-con">
         <div class="f-img">
-          <img src="../Media/feat2.svg" alt="code art image" />
+          <img src="dark-mode/Media/feat2.svg" alt="code art image" />
         </div>
         <div class="f-text">
           <ol class="f-ol">
@@ -170,13 +185,13 @@
           </ol>
         </div>
         <div class="f-img">
-          <img src="../Media/feat3.svg" alt="code art image" />
+          <img src="dark-mode/Media/feat3.svg" alt="code art image" />
         </div>
       </div>
       <!-- ----------------------------------------------------- -->
       <div class="first-con">
         <div class="f-img">
-          <img src="../Media/feat4.svg" alt="code art image" />
+          <img src="dark-mode/Media/feat4.svg" alt="code art image" />
         </div>
         <div class="f-text">
           <ol class="f-ol">
@@ -206,7 +221,7 @@
           </ol>
         </div>
         <div class="f-img">
-          <img src="../Media/feat5.svg" alt="code art image" />
+          <img src="dark-mode/Media/feat5.svg" alt="code art image" />
         </div>
       </div>
     </div>
@@ -272,14 +287,14 @@
           ></path>
         </svg>
       </li>
-     
+      <!-- أيقونة GitHub الجديدة -->
       <li class="icon github">
         <span class="tooltip">Github</span>
         <svg height="1.2em" fill="currentColor" viewBox="0 0 496 512" xmlns="http://www.w3.org/2000/svg">
             <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3.3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.3-6.2-10.1-27.8 2.3-57.4 0 0 21.9-7.8 71.6 26.3 20.9-6.2 43.6-9.4 66.3-9.4 22.6 0 45.4 3.1 66.3 9.4 49.7-34.1 71.6-26.3 71.6-26.3 12.4 29.6 4.6 51.2 2.3 57.4 16 17.6 23.6 31.4 23.6 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.8 17.3 23.2 17.3 45.9 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
         </svg>
       </li>
-      
+      <!-- أيقونة YouTube الجديدة -->
       <li class="icon youtube">
         <span class="tooltip">YouTube</span>
         <svg height="1.2em" fill="currentColor" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
@@ -295,20 +310,12 @@
             <input placeholder="E-mail" id="email" name="email" type="text" class="input" required=""/>
             <input placeholder="Password" id="password" name="password" type="password" class="input" required="" />
             <span class="forgot-password"
-<<<<<<< Updated upstream
-              ><a href="#">Forgot Password ?</a></span
-=======
               ><a href="dark-mode/html/dark sign up .php">Forgot Password ?</a></span
->>>>>>> Stashed changes
             >
             <input value="Sign In" type="submit" class="login-button" />
           </form>
           <div class="social-account-container">
-<<<<<<< Updated upstream
-            <span class="title">Or Sign in with</span>
-=======
             <span class="title"><a href="dark-mode/html/dark sign up .php">Or sign up ?</a></span>
->>>>>>> Stashed changes
             <div class="social-accounts">
               <button class="social-button google">
                 <img src="dark-mode/Media/google.png" alt="google" />
@@ -327,72 +334,70 @@
         </div>
       </div>
     </div>
-<<<<<<< Updated upstream
-  </body>
-=======
-  
-     <script>
-        let currentSlide = 0;
-        let autoSlideInterval;
+            <script>
         const sliderWrapper = document.getElementById('sliderWrapper');
-        const sliderContainer = document.getElementById('articlesSlider');
+const sliderContainer = document.getElementById('articlesSlider');
+let currentSlide = 0;
+let autoSlideInterval;
 
-        function initSlider() {
-            const articles = JSON.parse(localStorage.getItem('articles')) || [];
-            if (articles.length === 0) {
-                sliderContainer.style.display = 'none';
-                return;
-            }
-            sliderContainer.style.display = 'block';
-            sliderWrapper.innerHTML = articles.map(article => `
-                <div class="article-slide">
-                    <div class="article-card-3d">
-                        <span class="category-badge">${article.category}</span>
-                        <h2>${article.title}</h2>
-                        ${article.image ? `<img src="${article.image}" alt="${article.title}">` : ''}
-                        <p>${article.content.substring(0, 250)}${article.content.length > 250 ? '...' : ''}</p>
-                    </div>
-                </div>
-            `).join('');
-            currentSlide = 0;
-            updateSliderPosition();
-            startAutoSlide();
-        }
+async function initSlider() {
+    const res = await fetch('fetch_articles_dark.php');
+    const articles = await res.json();
 
-        function updateSliderPosition() {
-            const slides = document.querySelectorAll('.article-slide');
-            if (slides.length === 0) return;
-            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
+    if(articles.length === 0){
+        sliderContainer.style.display = 'none';
+        return;
+    }
 
-        function nextSlide() {
-            const slides = document.querySelectorAll('.article-slide');
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateSliderPosition();
-            resetAutoSlide();
-        }
+    sliderContainer.style.display = 'block';
+    sliderWrapper.innerHTML = articles.map(article => `
+        <div class="article-slide">
+            <div class="article-card-3d">
+                <span class="category-badge">${article.category}</span>
+                <h2>${article.title}</h2>
+                ${article.image ? `<img src="${article.image}" alt="${article.title}">` : '<div class="placeholder-img"></div>'}
 
-        function prevSlide() {
-            const slides = document.querySelectorAll('.article-slide');
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            updateSliderPosition();
-            resetAutoSlide();
-        }
+                <p>${article.content.substring(0, 250)}${article.content.length > 250 ? '...' : ''}</p>
+            </div>
+        </div>
+    `).join('');
 
-        function startAutoSlide() {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = setInterval(nextSlide, 10000);
-        }
+    currentSlide = 0;
+    updateSliderPosition();
+    startAutoSlide();
+}
 
-        function resetAutoSlide() {
-            startAutoSlide();
-        }
+function updateSliderPosition() {
+    const slides = document.querySelectorAll('.article-slide');
+    if(slides.length === 0) return;
+    sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
 
-        window.addEventListener('storage', (e) => {
-            if (e.key === 'articles') initSlider();
-        });
+function nextSlide() {
+    const slides = document.querySelectorAll('.article-slide');
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSliderPosition();
+    resetAutoSlide();
+}
 
-        document.addEventListener('DOMContentLoaded', initSlider);
+function prevSlide() {
+    const slides = document.querySelectorAll('.article-slide');
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSliderPosition();
+    resetAutoSlide();
+}
+
+function startAutoSlide(){
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(nextSlide, 10000);
+}
+
+function resetAutoSlide(){
+    startAutoSlide();
+}
+
+document.addEventListener('DOMContentLoaded', initSlider);
+
 
                 //--------------------------------------------------
 
@@ -429,6 +434,7 @@ function checkLoginStatus() {
     if (isLoggedIn) {
         hideLoginUI(); 
         unfreezePage();
+
     } else {
         setTimeout(() => {
             const agree = confirm("You should sign in to continue");
@@ -447,7 +453,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
     const formData = new FormData(this);
 
-    fetch("../../sign_in_val.php", {
+    fetch("sign_in_val.php", {
         method: "POST",
         body: formData
     })
@@ -475,7 +481,5 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
 document.addEventListener("DOMContentLoaded", checkLoginStatus);
     </script>
-    
-</body>
->>>>>>> Stashed changes
+  </body>
 </html>

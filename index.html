@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
+<<<<<<< Updated upstream
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>welcome</title>
+</head>
+<body>
+<a href="dark-mode/html/dark main.html">enter</a>
+
+</body>
+=======
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Code House</title>
-    <link rel="icon" type="imges/x-icon" href="../Media/icon.ico" />
+    <link rel="icon" type="imges/x-icon" href="dark-mode/Media/icon.ico" />
     <link rel="stylesheet" href="dark-mode/css/dark main.css" />
     <!-- #0067be -->
     <!-- #008aff -->
@@ -52,18 +62,9 @@
         </a>
       </div>
       <div class="login">
-        <button class="btn"><a href="index.html#signin">سجل الان</a></button>
+        <button class="btn" id="login_button"><a href="index.html#signin">سجل الان</a></button>
       </div>
     </header>
-=======
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>welcome</title>
-</head>
-<body>
-<a href="dark-mode/html/dark main.html">enter</a>
->>>>>>> a6c1800501215185d5067ee8246b4cf5cf89865f
 
 
     <div class="first-con">
@@ -313,33 +314,19 @@
       </li>
     </ul>
       </div>
-      <div class="signin">
+      <div class="signin" id="signin_div">
         <div class="container-signin">
           <div class="heading">Sign In</div>
-          <form class="form" action="">
-            <input
-              placeholder="E-mail"
-              id="email"
-              name="email"
-              type="text"
-              class="input"
-              required=""
-            />
-            <input
-              placeholder="Password"
-              id="password"
-              name="password"
-              type="password"
-              class="input"
-              required=""
-            />
+          <form class="form" action="sign_in_val.php" id="loginForm" method="post">
+            <input placeholder="E-mail" id="email" name="email" type="text" class="input" required=""/>
+            <input placeholder="Password" id="password" name="password" type="password" class="input" required="" />
             <span class="forgot-password"
-              ><a href="dark-mode/html/dark sign up .html">Forgot Password ?</a></span
+              ><a href="dark-mode/html/dark_sign_up.php">Forgot Password ?</a></span
             >
             <input value="Sign In" type="submit" class="login-button" />
           </form>
           <div class="social-account-container">
-            <span class="title"><a href="dark-mode/html/dark sign up .html">Or sign up ?</a></span>
+            <span class="title"><a href="dark-mode/html/dark_sign_up.php">Or sign up ?</a></span>
             <div class="social-accounts">
               <button class="social-button google">
                 <img src="dark-mode/Media/google.png" alt="google" />
@@ -365,7 +352,7 @@
         const sliderContainer = document.getElementById('articlesSlider');
 
         function initSlider() {
-            const articles = JSON.parse(localStorage.getItem('articles')) || [];
+            const articles = JSON.parse(sessionStorage.getItem('articles')) || [];
             
             if (articles.length === 0) {
                 sliderContainer.style.display = 'none';
@@ -427,6 +414,89 @@
         });
 
         document.addEventListener('DOMContentLoaded', initSlider);
+
+        //--------------------------------------------------
+
+function freezePage() {
+    document.body.style.overflow = "hidden";
+}
+
+function unfreezePage() {
+    document.body.style.overflow = "auto";
+}
+
+function hideLoginUI() {
+    const div = document.getElementById("signin_div");
+    const btn = document.getElementById("login_button");
+
+    if (div) div.style.display = "none";
+    if (btn) btn.style.display = "none";
+}
+
+
+function scrollToLoginForm() {
+    const form = document.getElementById("loginForm");
+    if (form) {
+        const yOffset = -230; 
+        const y = form.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+    }
+}
+
+
+function checkLoginStatus() {
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn) {
+        hideLoginUI(); 
+        unfreezePage();
+
+    } else {
+        setTimeout(() => {
+            const agree = confirm("You should sign in to continue");
+
+            freezePage();
+
+            if (agree) {
+                scrollToLoginForm();
+            }
+        }, 500);
+    }
+}
+
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch("sign_in_val.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(result => {
+        if (result === "success") {
+            sessionStorage.setItem("isLoggedIn", "true");
+            unfreezePage();
+            hideLoginUI();
+            alert("Login successful!");
+        } 
+        else if (result === "wrong") {
+            alert("Wrong Email or Password");
+        } 
+        else {
+            alert("Login failed");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Server error");
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", checkLoginStatus);
     </script>
   </body>
+>>>>>>> Stashed changes
 </html>

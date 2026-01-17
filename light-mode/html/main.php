@@ -7,20 +7,20 @@
     <link rel="icon" type="imges/x-icon" href="../Media/icon.ico" />
     <link rel="stylesheet" href="../css/main.css" />
     <!-- #0067be -->
-    <!-- #008aff -->
-  </head>
+    <!-- #008aff -->    
+</head>
   <body>
     <header>
       <div class="logo">
-        <a href="main.html"><img src="../Media/Icon_trns.png" alt="Logo" /></a>
+        <a href="main.php"><img src="../Media/Icon_trns.png" alt="Logo" /></a>
       </div>
       <div class="web-name">
-        <a href="main.html"><h1>Code House</h1></a>
+        <a href="main.php"><h1>Code House</h1></a>
       </div>
       <div class="nav-bar">
         <ul>
           <li>
-            <button class="nav-but"><a href="main.html">الرئيسية</a></button>
+            <button class="nav-but"><a href="main.php">الرئيسية</a></button>
           </li>
           <li>
             <button class="nav-but"><a href="courses.html">كورسات</a></button>
@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="mode-switch">
-        <a href="../../dark-mode/html/dark main.html" class="mode-link">
+        <a href="../../index.php" class="mode-link">
           <span class="img"></span>
         </a>
       </div>
@@ -65,6 +65,20 @@
         <img src="../Media/Coding workshop-amico.svg" alt="code art image" />
       </div>
     </div>
+    
+   <!-- Article Section --------------------- -->
+    <div class="articles-slider-container" id="articlesSlider">
+        <div class="slider-wrapper" id="sliderWrapper">
+            <!-- Articles will be loaded here -->
+        </div>
+        <div class="slider-nav">
+            <!-- Corrected Button Directions for RTL -->
+            <button class="nav-btn" onclick="prevSlide()" title="السابق">&#10094;</button>
+            <button class="nav-btn" onclick="nextSlide()" title="التالي">&#10095;</button>
+           
+        </div>
+    </div>
+
     <h3 class="title">Welcome to Code House</h3>
     <div class="video">
       <video
@@ -295,29 +309,21 @@
             <input placeholder="E-mail" id="email" name="email" type="text" class="input" required=""/>
             <input placeholder="Password" id="password" name="password" type="password" class="input" required="" />
             <span class="forgot-password"
-<<<<<<< Updated upstream
-              ><a href="#">Forgot Password ?</a></span
-=======
               ><a href="dark-mode/html/dark sign up .php">Forgot Password ?</a></span
->>>>>>> Stashed changes
             >
             <input value="Sign In" type="submit" class="login-button" />
           </form>
           <div class="social-account-container">
-<<<<<<< Updated upstream
-            <span class="title">Or Sign in with</span>
-=======
-            <span class="title"><a href="dark-mode/html/dark sign up .php">Or sign up ?</a></span>
->>>>>>> Stashed changes
+            <span class="title"><a href="sign up .php">Or sign up ?</a></span>
             <div class="social-accounts">
               <button class="social-button google">
-                <img src="dark-mode/Media/google.png" alt="google" />
+                <img src="../media/google.png" alt="google" />
               </button>
               <button class="social-button apple">
-                <img src="dark-mode/Media/apple.png" alt="google" />
+                <img src="../Media/apple.png" alt="google" />
               </button>
               <button class="social-button twitter">
-                <img src="dark-mode/Media/twitter.png" alt="google" class="svg" />
+                <img src="../Media/twitter.png" alt="google" class="svg" />
               </button>
             </div>
           </div>
@@ -327,72 +333,71 @@
         </div>
       </div>
     </div>
-<<<<<<< Updated upstream
-  </body>
-=======
   
      <script>
-        let currentSlide = 0;
-        let autoSlideInterval;
         const sliderWrapper = document.getElementById('sliderWrapper');
-        const sliderContainer = document.getElementById('articlesSlider');
+const sliderContainer = document.getElementById('articlesSlider');
+let currentSlide = 0;
+let autoSlideInterval;
 
-        function initSlider() {
-            const articles = JSON.parse(localStorage.getItem('articles')) || [];
-            if (articles.length === 0) {
-                sliderContainer.style.display = 'none';
-                return;
-            }
-            sliderContainer.style.display = 'block';
-            sliderWrapper.innerHTML = articles.map(article => `
-                <div class="article-slide">
-                    <div class="article-card-3d">
-                        <span class="category-badge">${article.category}</span>
-                        <h2>${article.title}</h2>
-                        ${article.image ? `<img src="${article.image}" alt="${article.title}">` : ''}
-                        <p>${article.content.substring(0, 250)}${article.content.length > 250 ? '...' : ''}</p>
-                    </div>
-                </div>
-            `).join('');
-            currentSlide = 0;
-            updateSliderPosition();
-            startAutoSlide();
-        }
+async function initSlider() {
+    const res = await fetch('../../fetch_articles_light.php');
+    const articles = await res.json();
 
-        function updateSliderPosition() {
-            const slides = document.querySelectorAll('.article-slide');
-            if (slides.length === 0) return;
-            sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
+    if(articles.length === 0){
+        sliderContainer.style.display = 'none';
+        return;
+    }
 
-        function nextSlide() {
-            const slides = document.querySelectorAll('.article-slide');
-            currentSlide = (currentSlide + 1) % slides.length;
-            updateSliderPosition();
-            resetAutoSlide();
-        }
+    sliderContainer.style.display = 'block';
+    sliderWrapper.innerHTML = articles.map(article => `
+        <div class="article-slide">
+            <div class="article-card-3d">
+                <span class="category-badge">${article.category}</span>
+                <h2>${article.title}</h2>
+                ${article.image ? `<img src="${article.image}" alt="${article.title}">` : '<div class="placeholder-img"></div>'}
 
-        function prevSlide() {
-            const slides = document.querySelectorAll('.article-slide');
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            updateSliderPosition();
-            resetAutoSlide();
-        }
+                <p>${article.content.substring(0, 250)}${article.content.length > 250 ? '...' : ''}</p>
+            </div>
+        </div>
+    `).join('');
 
-        function startAutoSlide() {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = setInterval(nextSlide, 10000);
-        }
+    currentSlide = 0;
+    updateSliderPosition();
+    startAutoSlide();
+}
 
-        function resetAutoSlide() {
-            startAutoSlide();
-        }
+function updateSliderPosition() {
+    const slides = document.querySelectorAll('.article-slide');
+    if(slides.length === 0) return;
+    sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
 
-        window.addEventListener('storage', (e) => {
-            if (e.key === 'articles') initSlider();
-        });
+function nextSlide() {
+    const slides = document.querySelectorAll('.article-slide');
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSliderPosition();
+    resetAutoSlide();
+}
 
-        document.addEventListener('DOMContentLoaded', initSlider);
+function prevSlide() {
+    const slides = document.querySelectorAll('.article-slide');
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSliderPosition();
+    resetAutoSlide();
+}
+
+function startAutoSlide(){
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = setInterval(nextSlide, 10000);
+}
+
+function resetAutoSlide(){
+    startAutoSlide();
+}
+
+document.addEventListener('DOMContentLoaded', initSlider);
+
 
                 //--------------------------------------------------
 
@@ -477,5 +482,4 @@ document.addEventListener("DOMContentLoaded", checkLoginStatus);
     </script>
     
 </body>
->>>>>>> Stashed changes
 </html>
